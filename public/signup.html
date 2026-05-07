@@ -3,115 +3,135 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Create Admin Account — E. Trenchburg Writes</title>
+  <title>Account — E. Trenchburg Writes</title>
+  <!-- Netlify Identity Widget ONLY — no Decap CMS interference -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-family: system-ui, sans-serif;
       background: #faf8f5;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .wordmark {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #1a1614;
     }
     .card {
       background: white;
       border: 1px solid rgba(26,22,20,0.12);
       border-radius: 8px;
-      padding: 48px 40px;
-      max-width: 420px;
+      padding: 40px;
+      max-width: 400px;
       width: 100%;
       text-align: center;
       box-shadow: 0 8px 32px rgba(26,22,20,0.08);
     }
-    h1 {
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-      color: #1a1614;
-    }
-    p {
-      font-size: 0.88rem;
-      color: #6b6560;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
+    h1 { font-family: Georgia, serif; font-style: italic; font-size: 1.3rem; margin-bottom: 12px; color: #1a1614; }
+    p { font-size: 0.85rem; color: #6b6560; line-height: 1.6; margin-bottom: 24px; }
     button {
-      display: inline-block;
-      padding: 14px 32px;
+      width: 100%;
+      padding: 13px 24px;
       background: #1a1614;
       color: #faf8f5;
-      border: none;
+      border: 1.5px solid #1a1614;
       border-radius: 4px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.3s;
-      width: 100%;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      transition: all 0.3s;
     }
-    button:hover { background: #6b6560; }
-    button.outline {
-      background: transparent;
-      color: #1a1614;
-      border: 1.5px solid #1a1614;
-    }
+    button:hover { background: transparent; color: #1a1614; }
+    button.outline { background: transparent; color: #1a1614; }
     button.outline:hover { background: #1a1614; color: #faf8f5; }
-    .wordmark {
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: #1a1614;
-      margin-bottom: 24px;
-      display: block;
-    }
-    .note {
-      font-size: 0.75rem;
-      color: #9c9390;
+    #status {
+      font-size: 0.82rem;
+      color: #8a9e8a;
       margin-top: 16px;
+      min-height: 20px;
     }
   </style>
 </head>
 <body>
+  <div class="wordmark">E. Trenchburg Writes</div>
+
   <div class="card">
-    <span class="wordmark">E. Trenchburg Writes</span>
-    <h1>Create Admin Account</h1>
-    <p>Use the button below to create your admin account. After signing up, check your email to confirm, then log in at <strong>/admin</strong>.</p>
+    <h1 id="card-title">Admin Access</h1>
+    <p id="card-desc">Loading…</p>
 
-    <button id="signup-btn">Sign Up / Create Account</button>
-    <button class="outline" id="login-btn">Already have account? Log In</button>
-    <button class="outline" id="recover-btn">Forgot Password?</button>
+    <button id="btn-signup">Create Account</button>
+    <button id="btn-login" class="outline">Log In</button>
+    <button id="btn-recover" class="outline" style="display:none">Reset Password</button>
 
-    <p class="note">After creating your account, delete this page from Netlify or set registration back to "Invite Only".</p>
+    <div id="status"></div>
   </div>
 
   <script>
-    const widget = window.netlifyIdentity;
+    var widget = window.netlifyIdentity;
+    var hash   = window.location.hash;
+    var status = document.getElementById('status');
+    var title  = document.getElementById('card-title');
+    var desc   = document.getElementById('card-desc');
 
-    document.getElementById('signup-btn').addEventListener('click', function() {
-      widget.open('signup');
-    });
+    // Detect token type and open appropriate widget modal automatically
+    if (hash.indexOf('confirmation_token=') > -1) {
+      title.textContent = 'Confirming your email…';
+      desc.textContent  = 'Please wait, processing your confirmation link.';
+      status.textContent = 'Opening confirmation…';
+      // Widget auto-detects confirmation_token and confirms the account on load
+      window.netlifyIdentity.on('init', function() {
+        status.textContent = 'Email confirmed! Redirecting to admin…';
+      });
 
-    document.getElementById('login-btn').addEventListener('click', function() {
-      widget.open('login');
-    });
+    } else if (hash.indexOf('invite_token=') > -1) {
+      title.textContent = 'Set Your Password';
+      desc.textContent  = 'You\'ve been invited. Click below to set your password.';
+      status.textContent = '';
+      window.addEventListener('load', function() { widget.open(); });
 
-    document.getElementById('recover-btn').addEventListener('click', function() {
-      widget.open('recovery');
-    });
+    } else if (hash.indexOf('recovery_token=') > -1) {
+      title.textContent = 'Reset Password';
+      desc.textContent  = 'Click below to set a new password.';
+      document.getElementById('btn-recover').style.display = 'block';
+      window.addEventListener('load', function() { widget.open(); });
 
+    } else {
+      title.textContent = 'Admin Login';
+      desc.textContent  = 'Sign up for a new account or log in to access the CMS.';
+    }
+
+    // Button actions
+    document.getElementById('btn-signup').addEventListener('click', function() { widget.open('signup'); });
+    document.getElementById('btn-login').addEventListener('click', function()  { widget.open('login');  });
+    document.getElementById('btn-recover').addEventListener('click', function(){ widget.open('recovery'); });
+
+    // After any successful auth → go to admin
     widget.on('login', function(user) {
-      console.log('Logged in:', user);
-      window.location.href = '/admin/';
+      status.textContent = 'Logged in as ' + user.email + '. Redirecting…';
+      setTimeout(function() { window.location.href = '/admin/'; }, 800);
     });
 
     widget.on('signup', function(user) {
-      console.log('Signed up:', user);
-      alert('Account created! Check your email to confirm, then log in at /admin/');
+      title.textContent = 'Check your inbox!';
+      desc.textContent  = 'A confirmation email was sent to ' + user.email + '. Click the link to confirm, then log in below.';
+      document.getElementById('btn-signup').style.display = 'none';
+    });
+
+    // Auto-redirect if already logged in
+    widget.on('init', function(user) {
+      if (user) {
+        status.textContent = 'Already logged in. Redirecting to admin…';
+        setTimeout(function() { window.location.href = '/admin/'; }, 800);
+      }
     });
   </script>
 </body>
