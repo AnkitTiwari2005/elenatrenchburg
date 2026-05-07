@@ -19,7 +19,11 @@ const GA_ID = 'G-XXXXXXXXXX'; // Replace with real GA4 Measurement ID
   <script>
     (function() {
       var hash = window.location.hash;
-      if (hash && (hash.indexOf('invite_token=') > -1 || hash.indexOf('recovery_token=') > -1)) {
+      if (hash && (
+        hash.indexOf('invite_token=') > -1 ||
+        hash.indexOf('recovery_token=') > -1 ||
+        hash.indexOf('confirmation_token=') > -1
+      )) {
         window.location.replace('/admin/' + hash);
       }
     })();
