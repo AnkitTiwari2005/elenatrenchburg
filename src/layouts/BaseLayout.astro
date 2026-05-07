@@ -15,6 +15,16 @@ const GA_ID = 'G-XXXXXXXXXX'; // Replace with real GA4 Measurement ID
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- MUST be first: redirect Netlify Identity tokens to /admin immediately -->
+  <script>
+    (function() {
+      var hash = window.location.hash;
+      if (hash && (hash.indexOf('invite_token=') > -1 || hash.indexOf('recovery_token=') > -1)) {
+        window.location.replace('/admin/' + hash);
+      }
+    })();
+  </script>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
