@@ -35,6 +35,18 @@ const GA_ID = 'G-XXXXXXXXXX'; // Replace with real GA4 Measurement ID
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
+  <!-- Netlify Identity Widget (handles invite & recovery tokens from any page) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    // Redirect invite/recovery tokens to /admin so the CMS widget can handle them
+    if (window.location.hash && (
+      window.location.hash.includes('invite_token=') ||
+      window.location.hash.includes('recovery_token=')
+    )) {
+      window.location = '/admin/' + window.location.hash;
+    }
+  </script>
+
   <!-- Google Analytics 4 -->
   <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
   <script define:vars={{ GA_ID }}>
