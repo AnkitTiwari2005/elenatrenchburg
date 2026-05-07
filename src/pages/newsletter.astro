@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="The Editorial Newsletter — E. Trenchburg Writes" description="Join 500+ brand builders who start their week sharper. Weekly insights on brand writing, content strategy, and editorial craft.">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="newsletter-section" style="min-height:90svh;">
+    <div class="bg-img">
+      <img src="/images/newsletter-bg.jpg" alt="" aria-hidden="true" />
+    </div>
+    <div class="overlay"></div>
+    <div class="content container fade-in" style="max-width:640px;">
+      <div class="newsletter-badge" style="margin-bottom:32px;">
+        <span>✦</span><span>Est. 2024</span><span>✦</span>
+      </div>
+      <h1 class="display" style="margin-bottom:24px;"><em>The Editorial</em></h1>
+      <p class="subheading" style="font-size:1.1rem;margin-bottom:32px;">a weekly letter for brand builders</p>
+      <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;margin-bottom:40px;max-width:480px;">
+        Not your average agency newsletter — join 500+ brand builders who start their week sharper. Weekly insights on brand writing, content strategy, editorial craft, and building a voice that outlasts the algorithm.
+      </p>
+      <div class="email-strip" style="margin:0 auto 24px;max-width:460px;">
+        <input type="email" placeholder="your@email.com" aria-label="Your email address" />
+        <button type="submit">Join Free</button>
+      </div>
+      <p class="label">Join 500+ brand builders · Free · Unsubscribe anytime</p>
+    </div>
+  </section>
+
+  <!-- What you'll get -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="align-items:center;gap:80px;">
+        <div class="fade-in">
+          <span class="label" style="margin-bottom:16px;display:block;">What's inside</span>
+          <h2 class="heading" style="font-style:italic;margin-bottom:28px;">Every week in your inbox</h2>
+          <ul class="sparkle-list">
+            <li>Weekly brand writing insights you can apply immediately</li>
+            <li>Editorial strategy breakdowns from real client projects</li>
+            <li>The craft of building a voice that outlasts the algorithm</li>
+            <li>Tools, frameworks, and resources for content teams</li>
+            <li>Honest takes on the content industry — no fluff</li>
+          </ul>
+          <div style="margin-top:40px;">
+            <div class="email-strip" style="max-width:400px;">
+              <input type="email" placeholder="your@email.com" aria-label="Your email" />
+              <button type="submit">Join Free</button>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div style="background:var(--bg-alt);border-radius:var(--radius-lg);padding:40px;border:1px solid var(--border);">
+            <p class="label" style="margin-bottom:20px;">Past issue preview</p>
+            <h3 style="font-family:var(--font-serif);font-style:italic;font-size:1.3rem;margin-bottom:16px;">On Voice, Consistency, and Why Most Brands Sound Like Nobody</h3>
+            <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.8;margin-bottom:16px;">This week, we're talking about the sameness trap. Why every brand in your space is starting to sound identical — and the one diagnostic question that reveals your brand's true voice...</p>
+            <span class="label" style="color:var(--sage);">Issue #12 · April 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Archive grid -->
+  <section class="section" style="background:var(--bg-alt);border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header-center fade-in" style="margin-bottom:48px;">
+        <span class="label" style="margin-bottom:12px;display:block;">Past issues</span>
+        <h2 class="heading" style="font-style:italic;">The Archive</h2>
+      </div>
+      <div class="grid-3 fade-in fade-in-delay-1">
+        {[
+          { n: 12, title: 'On Voice, Consistency, and Why Most Brands Sound Like Nobody', date: 'April 2024' },
+          { n: 11, title: 'The 3-Part Framework for Writing Copy That Actually Converts', date: 'April 2024' },
+          { n: 10, title: 'What a Good Editor Actually Does (And Why You Need One)', date: 'Mar 2024' },
+          { n: 9,  title: 'Building an Editorial Calendar That You\'ll Actually Stick To', date: 'Mar 2024' },
+          { n: 8,  title: 'How to Turn Your CEO\'s Brain Dump Into a Thought Leadership Piece', date: 'Feb 2024' },
+          { n: 7,  title: 'The SEO Myth That\'s Killing Your Long-Form Content', date: 'Feb 2024' },
+        ].map(issue => (
+          <div style="padding:28px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg);">
+            <span class="label" style="color:var(--sage);margin-bottom:10px;display:block;">Issue #{issue.n}</span>
+            <h3 style="font-family:var(--font-serif);font-style:italic;font-size:1rem;line-height:1.5;margin-bottom:12px;">{issue.title}</h3>
+            <p class="label">{issue.date}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

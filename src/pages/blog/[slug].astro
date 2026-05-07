@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'brand-sounds-like-everyone-else' }, props: { title: "Why Your Brand Sounds Like Everyone Else (And How to Fix It)", cat: "Brand Voice", date: "May 2024" }},
+    { params: { slug: 'anatomy-of-thought-leadership' }, props: { title: "The Anatomy of a Thought Leadership Piece That Actually Leads", cat: "Editorial Craft", date: "Apr 2024" }},
+    { params: { slug: 'long-form-is-not-dead' }, props: { title: "Long-Form Is Not Dead — It's Just Being Done Wrong", cat: "Content Strategy", date: "Mar 2024" }},
+    { params: { slug: 'how-to-brief-a-writer' }, props: { title: "How to Brief a Writer Without Losing Your Brand Voice", cat: "Writing Tips", date: "Mar 2024" }},
+    { params: { slug: 'hidden-cost-of-mediocre-copy' }, props: { title: "The Hidden Cost of Mediocre Copy: What Bad Writing Is Doing to Your Brand", cat: "Brand Voice", date: "Feb 2024" }},
+  ];
+}
+const { title, cat, date } = Astro.props;
+---
+<BaseLayout title={`${title} — E. Trenchburg Writes`} description={title}>
+  <Nav />
+
+  <!-- Hero image -->
+  <div style="padding-top:var(--nav-h);height:480px;overflow:hidden;position:relative;">
+    <img src="/images/blog-hero-1.jpg" alt={title} style="width:100%;height:100%;object-fit:cover;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(250,248,245,0.95));"></div>
+  </div>
+
+  <!-- Article -->
+  <article style="padding:80px 0;">
+    <div class="container" style="max-width:720px;margin:0 auto;">
+      <!-- Meta -->
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:24px;" class="fade-in">
+        <span class="tag tag-filled">{cat}</span>
+        <span class="label">{date}</span>
+        <span class="label">· By Elena Trenchburg</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="display-sm" style="font-style:italic;margin-bottom:48px;" class="fade-in">{title}</h1>
+
+      <!-- Body -->
+      <div class="fade-in" style="font-size:1.05rem;line-height:1.9;color:var(--text);">
+        <p style="margin-bottom:24px;">There's a particular kind of dread that comes from reading your own brand's website and thinking: <em>we sound exactly like everyone else.</em> Same adjectives. Same promises. Same breathless enthusiasm for "innovative solutions" and "customer-centric approaches."</p>
+
+        <p style="margin-bottom:24px;">The sameness problem is real, and it's getting worse. As content tools scale, the default voice is rising — and it sounds like nobody in particular.</p>
+
+        <div class="pull-quote">
+          "The question isn't whether your product is different. It's whether your words make that difference audible."
+        </div>
+
+        <h2 style="font-family:var(--font-serif);font-size:1.4rem;margin:40px 0 20px;">Why brands start sounding the same</h2>
+        <p style="margin-bottom:24px;">The first culprit is imitation. When a brand in your space does something that works — a certain tone, a certain structure — others follow. Before long, the whole category sounds like one company with many names.</p>
+
+        <p style="margin-bottom:24px;">The second culprit is fear. When brands are afraid to have a point of view, they smooth out the edges. The result is a voice that offends nobody and resonates with nobody.</p>
+
+        <h2 style="font-family:var(--font-serif);font-size:1.4rem;margin:40px 0 20px;">How to fix it — starting today</h2>
+        <p style="margin-bottom:24px;">The antidote is specificity. Not a different logo, not a rebrand — specificity. The more specific you are, the more irreplaceable you become. Specificity in your examples, your values, your opinions, and your language.</p>
+
+        <ul class="sparkle-list" style="margin-bottom:32px;">
+          <li>Write down 5 things your brand would never say — and then check if you're saying them.</li>
+          <li>Find the one belief that makes you different from every competitor. Lead with it.</li>
+          <li>Replace all category adjectives ("innovative," "trusted") with proof.</li>
+          <li>Read your copy aloud. If it could belong to someone else, rewrite it.</li>
+        </ul>
+
+        <p style="margin-bottom:24px;">Your brand voice is not a style guide. It's a point of view made consistent. That consistency — in tone, in opinion, in what you will and won't say — is what makes a brand sound like itself.</p>
+
+        <p style="margin-bottom:40px;font-family:var(--font-serif);font-style:italic;">And when a brand sounds like itself, everything else falls into place.</p>
+
+        <div style="border-top:1px solid var(--border);padding-top:32px;display:flex;align-items:center;gap:20px;">
+          <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;">
+            <img src="/images/about-portrait.jpg" alt="Elena Trenchburg" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div>
+            <p style="font-weight:600;font-size:0.9rem;">Elena Trenchburg</p>
+            <p style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Founder & CEO, E. Trenchburg Writes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related posts -->
+  <section class="section-sm" style="border-top:1px solid var(--border);background:var(--bg-alt);">
+    <div class="container">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-size:1.5rem;margin-bottom:32px;">Keep reading</h2>
+      <div class="grid-3">
+        {[
+          { title: "The Anatomy of a Thought Leadership Piece", slug: "anatomy-of-thought-leadership", cat: "Editorial Craft" },
+          { title: "Long-Form Is Not Dead — It's Just Being Done Wrong", slug: "long-form-is-not-dead", cat: "Content Strategy" },
+          { title: "How to Brief a Writer Without Losing Your Brand Voice", slug: "how-to-brief-a-writer", cat: "Writing Tips" },
+        ].map(p => (
+          <article class="blog-card">
+            <div class="card-img" style="aspect-ratio:3/2;border-radius:var(--radius-lg);overflow:hidden;background:var(--bg);">
+              <img src="/images/blog-hero-1.jpg" alt={p.title} style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="card-body">
+              <div class="card-meta"><span class="tag">{p.cat}</span></div>
+              <h3><a href={`/blog/${p.slug}`}>{p.title}</a></h3>
+              <a href={`/blog/${p.slug}`} class="read-more">Read More →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

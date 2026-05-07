@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout title="Brand Copywriting — E. Trenchburg Writes" description="Website copy, landing pages, and campaign messaging that converts without sounding like a pitch.">
+  <Nav />
+
+  <section style="padding-top:calc(var(--nav-h) + 80px);padding-bottom:60px;border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div style="max-width:640px;" class="fade-in">
+        <a href="/services" class="label" style="text-decoration:underline;text-underline-offset:3px;margin-bottom:20px;display:block;">← All Services</a>
+        <span class="tag tag-filled" style="margin-bottom:20px;">Copywriting</span>
+        <h1 class="display-sm" style="font-style:italic;margin:16px 0;">Brand Copywriting</h1>
+        <p style="font-size:1.1rem;color:var(--text-muted);line-height:1.8;margin-bottom:8px;">Words that position, persuade, and convert — without sounding like a pitch.</p>
+        <p style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);">₹12,000 – ₹35,000 / project</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="gap:80px;align-items:start;">
+
+        <div class="fade-in">
+          <h2 style="font-family:var(--font-serif);font-style:italic;font-size:1.5rem;margin-bottom:24px;">What's included</h2>
+          <ul style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;">
+            {[
+              ['Brand voice audit', 'We analyse your existing copy, your competitors, and your audience to find where your voice should live.'],
+              ['Homepage & key page copy', 'The pages that matter most — written with precision and a clear conversion hierarchy.'],
+              ['CTA strategy', 'Every call-to-action is deliberate. We write copy that moves people without feeling pushy.'],
+              ['2 full revision rounds', 'We refine until it sounds exactly right. Your voice, amplified.'],
+            ].map(([title, desc]) => (
+              <li style="padding:20px;border:1px solid var(--border);border-radius:var(--radius);">
+                <strong style="font-size:0.9rem;display:block;margin-bottom:6px;">{title}</strong>
+                <span style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">{desc}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="btn btn-primary">Start a Project</a>
+        </div>
+
+        <div class="fade-in fade-in-delay-2">
+          <div style="background:var(--bg-alt);border-radius:var(--radius-lg);padding:40px;border:1px solid var(--border);margin-bottom:28px;">
+            <p class="label" style="margin-bottom:16px;">Best for</p>
+            <ul class="sparkle-list">
+              <li>Brands launching or relaunching their website</li>
+              <li>Companies entering a new market or audience</li>
+              <li>Founders who know what they do but struggle to say it</li>
+              <li>Teams whose current copy doesn't convert</li>
+            </ul>
+          </div>
+          <div class="pull-quote" style="margin:0;">
+            "The best copy doesn't read like copy. It reads like the brand finally found the words it always meant to say."
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <h2 class="heading" style="font-style:italic;margin-bottom:40px;text-align:center;">How a Copywriting Project Works</h2>
+      <div class="grid-4 fade-in">
+        {[
+          { n:'01', t:'Brief & Discovery', b:'You complete The Brief Builder. We ask follow-up questions. We get aligned before a word is written.' },
+          { n:'02', t:'Voice Audit', b:'We review your existing content, your competitors, and your audience to map your voice positioning.' },
+          { n:'03', t:'First Draft', b:'Copy delivered in a clean doc. Every page structured with a clear hierarchy and conversion logic.' },
+          { n:'04', t:'Refine & Deliver', b:'Two rounds of revisions. Final files delivered in your preferred format, ready to publish.' },
+        ].map(s => (
+          <div style="text-align:center;padding:24px 16px;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;color:var(--sage);margin-bottom:10px;">{s.n}</div>
+            <h3 style="font-family:var(--font-serif);font-style:italic;font-size:1.1rem;margin-bottom:8px;">{s.t}</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;">{s.b}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm" style="text-align:center;">
+    <div class="container" style="max-width:520px;margin:0 auto;">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-size:1.6rem;margin-bottom:16px;">Ready to sound like yourself?</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">Tell us about your project and we'll be in touch within 48 hours.</p>
+      <a href="/contact" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

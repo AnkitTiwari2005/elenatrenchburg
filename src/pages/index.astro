@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="E. Trenchburg Writes — Where Words Become Legacy"
+  description="We craft content that builds authority, earns trust, and leaves a mark. Editorial writing and brand content agency."
+>
+  <Nav />
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- HERO -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-text fade-in">
+      <span class="label" style="margin-bottom:20px;display:block;">Est. 2024 · Ludhiana, India</span>
+      <h1 class="display">Where Words<br /><em>Become</em> Legacy</h1>
+      <p class="body-lg" style="color:var(--text-muted);margin:28px 0 40px;max-width:480px;">
+        We craft content that doesn't just fill pages — it builds authority, earns trust, and leaves a mark. For brands that believe in the power of the right word, in the right place, at the right time.
+      </p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="#free-resources" class="btn btn-primary">Start Exploring</a>
+        <a href="/about" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+
+    <div class="hero-images">
+      <div class="hero-img-main fade-in fade-in-delay-2">
+        <img src="/images/hero-portraits.jpg" alt="Elena Trenchburg — editorial writer" />
+      </div>
+      <div class="hero-img-secondary fade-in fade-in-delay-3">
+        <img src="/images/about-portrait.jpg" alt="Writing workspace" />
+      </div>
+      <!-- Decorative element -->
+      <div style="position:absolute;top:20px;right:10px;font-size:2.5rem;opacity:0.15;font-family:var(--font-serif);font-style:italic;transform:rotate(-12deg);z-index:10;">✦</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- FREE RESOURCES STRIP -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section id="free-resources" style="background:var(--bg-alt);padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+        <div class="fade-in">
+          <span class="label" style="margin-bottom:16px;display:block;">Free for you</span>
+          <h2 class="display-sm">Want to grab my <em>Free Brand Writing</em> resources?</h2>
+          <p style="color:var(--text-muted);margin-top:16px;font-size:0.95rem;line-height:1.7;">
+            Four tools to help your brand write better — brand voice checklist, editorial calendar, brief builder, and SEO outline guide. All on the house.
+          </p>
+          <div class="email-strip" style="margin-top:28px;max-width:420px;">
+            <input type="email" placeholder="your@email.com" aria-label="Email address" />
+            <button type="submit">Get Free Access</button>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-2" style="display:flex;justify-content:center;">
+          <div style="width:280px;aspect-ratio:3/4;background:var(--bg);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden;border:1px solid var(--border);">
+            <img src="/images/product-mockup.jpg" alt="Brand writing resources mockup" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MARQUEE TICKER -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      {[1,2].map(() => (
+        <>
+          <div class="marquee-item">Write With Purpose<span class="marquee-dot"></span></div>
+          <div class="marquee-item">Build Authority<span class="marquee-dot"></span></div>
+          <div class="marquee-item">Leave a Mark<span class="marquee-dot"></span></div>
+          <div class="marquee-item">Words That Work<span class="marquee-dot"></span></div>
+          <div class="marquee-item">Edit. Refine. Publish.<span class="marquee-dot"></span></div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ABOUT / BIO SECTION -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="about-section">
+        <div class="about-img fade-in">
+          <img src="/images/about-portrait.jpg" alt="Elena Trenchburg — Founder & CEO" style="aspect-ratio:4/5;object-fit:cover;" />
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <span class="label" style="margin-bottom:16px;display:block;">The philosophy</span>
+          <h2 class="heading" style="font-style:italic;margin-bottom:24px;">
+            I believe when your brand sounds like itself, <em>everything else falls into place.</em>
+          </h2>
+          <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:24px;">
+            E. Trenchburg Writes was built on a belief that most brands are under-written — not under-funded. Founded by Elena Trenchburg in 2024 and grown into a six-member editorial team, we partner with discerning brands to do one thing exceptionally well: put words to work.
+          </p>
+          <ul class="sparkle-list" style="margin-bottom:32px;">
+            <li>long-form content that earns authority and ages like fine wine.</li>
+            <li>surgical brand copy that converts without sounding like a sales pitch.</li>
+            <li>editorial strategy that makes your brand the obvious choice in the room.</li>
+          </ul>
+          <a href="/about" class="read-more">read our story →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- TRUSTED BY -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div class="trusted-by">
+    <div class="container">
+      <p class="label">trusted by</p>
+      <div class="logos-row" style="margin-top:32px;">
+        {['Forbes', 'LinkedIn', 'HubSpot', 'Semrush', 'Clutch'].map(b => (
+          <span class="logo-item">{b}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SERVICES PREVIEW -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div>
+          <span class="label" style="margin-bottom:12px;display:block;">What we do</span>
+          <h2 class="heading">Our Editorial Services</h2>
+          <p class="subheading" style="margin-top:8px;">From long-form to surgical brand copy, every piece is researched, refined, and crafted with purpose</p>
+        </div>
+        <a href="/services" class="btn btn-outline">See all services</a>
+      </div>
+
+      <div class="grid-4 fade-in fade-in-delay-1">
+        {[
+          { name: 'Editorial & Long-Form Content', price: '₹8,000 – ₹20,000/piece', tag: 'Long-Form', desc: 'Thought leadership, essays, and in-depth articles that position your brand as the authority in the room.' },
+          { name: 'Brand Copywriting', price: '₹12,000 – ₹35,000/project', tag: 'Copywriting', desc: 'Website copy, landing pages, and campaign messaging that converts without sounding like a pitch.' },
+          { name: 'Content Strategy & Blogs', price: '₹6,000 – ₹15,000/month', tag: 'Strategy', desc: 'A full editorial roadmap — topics, SEO, cadence — plus the monthly execution to match.' },
+          { name: 'Editing & Refinement', price: '₹2,500 – ₹8,000/piece', tag: 'Editing', desc: 'Your draft, elevated. Structural edits, line edits, and polish that makes every word count.' },
+        ].map((s, i) => (
+          <div class={`service-card fade-in fade-in-delay-${i+1}`}>
+            <span class="tag">{s.tag}</span>
+            <h3>{s.name}</h3>
+            <p>{s.desc}</p>
+            <span class="price">{s.price}</span>
+            <a href="/services" class="btn btn-outline" style="margin-top:auto;font-size:0.62rem;padding:10px 18px;">Inquire</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- NEWSLETTER SECTION — THE EDITORIAL -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="newsletter-section">
+    <div class="bg-img">
+      <img src="/images/newsletter-bg.jpg" alt="" aria-hidden="true" />
+    </div>
+    <div class="overlay"></div>
+    <div class="content container fade-in">
+      <div class="newsletter-badge">
+        <span>✦</span>
+        <span>The Editorial</span>
+        <span>✦</span>
+      </div>
+      <h2 class="display-sm" style="margin-bottom:20px;">
+        <em>Slow mornings,<br />sharp words.</em>
+      </h2>
+      <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;margin-bottom:32px;">
+        Not your average agency newsletter — join 500+ brand builders who start their week sharper. Weekly insights on brand writing, content strategy, editorial craft, and building a voice that outlasts the algorithm.
+      </p>
+      <div class="email-strip" style="margin:0 auto 20px;max-width:440px;">
+        <input type="email" placeholder="your@email.com" aria-label="Email address" />
+        <button type="submit">Join Free</button>
+      </div>
+      <p class="label" style="margin-top:12px;">Join 500+ brand builders · Free · Unsubscribe anytime</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- RECENT BLOG POSTS -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div>
+          <span class="label" style="margin-bottom:12px;display:block;">From the blog</span>
+          <h2 class="heading">Recently on the Blog</h2>
+        </div>
+        <a href="/blog" class="btn btn-outline">View all posts</a>
+      </div>
+      <div class="grid-3">
+        {[
+          {
+            title: "Why Your Brand Sounds Like Everyone Else (And How to Fix It)",
+            cat: "Brand Voice",
+            date: "May 2024",
+            excerpt: "The sameness problem is real. Here's how to diagnose it and build a voice that's unmistakably yours.",
+            slug: "brand-sounds-like-everyone-else",
+          },
+          {
+            title: "The Anatomy of a Thought Leadership Piece That Actually Leads",
+            cat: "Editorial Craft",
+            date: "Apr 2024",
+            excerpt: "Most thought leadership doesn't lead anywhere. Here's the structure that changes that.",
+            slug: "anatomy-of-thought-leadership",
+          },
+          {
+            title: "Long-Form Is Not Dead — It's Just Being Done Wrong",
+            cat: "Content Strategy",
+            date: "Mar 2024",
+            excerpt: "Long-form content is having a moment — for those who know how to do it right.",
+            slug: "long-form-is-not-dead",
+          },
+        ].map((post, i) => (
+          <article class={`blog-card fade-in fade-in-delay-${i+1}`}>
+            <div class="card-img" style="aspect-ratio:3/2;border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-alt);">
+              <img src="/images/blog-hero-1.jpg" alt={post.title} style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="tag">{post.cat}</span>
+                <span class="label">{post.date}</span>
+              </div>
+              <h3><a href={`/blog/${post.slug}`}>{post.title}</a></h3>
+              <p>{post.excerpt}</p>
+              <a href={`/blog/${post.slug}`} class="read-more">Read More →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- INSTAGRAM / PINTEREST GRID -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="section-sm" style="border-top:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <a href="https://instagram.com/elenatrenchburg" target="_blank" rel="noopener" class="label" style="text-decoration:underline;text-underline-offset:3px;">Follow along @elenatrenchburg</a>
+      </div>
+      <div class="social-grid fade-in fade-in-delay-1">
+        {[1,2,3,4,5,6].map(() => (
+          <a href="https://instagram.com/elenatrenchburg" target="_blank" rel="noopener" class="social-tile">
+            <img src="/images/instagram-grid.jpg" alt="@elenatrenchburg on Instagram" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

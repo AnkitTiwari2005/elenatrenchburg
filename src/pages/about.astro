@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Meet Elena — E. Trenchburg Writes" description="Elena Trenchburg is the Founder & CEO of E. Trenchburg Writes, an editorial content writing agency established in 2024.">
+  <Nav />
+
+  <!-- Page Header -->
+  <div style="padding-top:var(--nav-h);background:var(--bg-alt);">
+    <div style="height:420px;overflow:hidden;position:relative;">
+      <img src="/images/hero-portraits.jpg" alt="Elena Trenchburg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(250,248,245,0.9));"></div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container">
+      <div class="about-section">
+        <div class="fade-in">
+          <span class="label" style="margin-bottom:12px;display:block;">Founder & CEO</span>
+          <h1 class="display-sm" style="font-style:italic;margin-bottom:8px;">Meet Elena</h1>
+          <div class="divider"></div>
+          <p style="font-size:0.95rem;line-height:1.9;color:var(--text-muted);margin-bottom:20px;">
+            I'm a writer, editor, and the founder of E. Trenchburg Writes — a six-member editorial agency built on one conviction: most brands are under-written, not under-funded.
+          </p>
+          <p style="font-size:0.95rem;line-height:1.9;color:var(--text-muted);margin-bottom:20px;">
+            I started this agency in 2024 because I kept seeing the same problem: brilliant brands communicating with forgettable words. A great product, a weak page. A real story, a generic bio. A sharp perspective, a tepid newsletter.
+          </p>
+          <p style="font-size:0.95rem;line-height:1.9;color:var(--text-muted);margin-bottom:32px;">
+            E. Trenchburg Writes exists to fix that. We partner with discerning brands to do one thing exceptionally well: put words to work.
+          </p>
+          <ul class="sparkle-list">
+            <li>simplifying brand voices to find their true authority</li>
+            <li>ditching the "post more" mindset for "write better"</li>
+            <li>making editorial strategy work for every size brand</li>
+            <li>creating content ecosystems — not just one-off pieces</li>
+            <li>building slow, sustainable brand narratives that stick</li>
+          </ul>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="about-img">
+            <img src="/images/about-portrait.jpg" alt="Elena Trenchburg at work" style="aspect-ratio:4/5;object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Belief Pillars -->
+  <section class="section" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header-center fade-in" style="max-width:560px;margin:0 auto 60px;">
+        <span class="label" style="margin-bottom:16px;display:block;">Our beliefs</span>
+        <h2 class="heading" style="font-style:italic;">What we stand for</h2>
+      </div>
+      <div class="grid-2 fade-in fade-in-delay-1">
+        {[
+          { title: 'Words Over Volume', body: 'One exceptional piece beats ten forgettable ones. We would rather spend three days making one piece brilliant than three hours making five pieces passable.' },
+          { title: 'Brand Voice First', body: 'Everything flows from knowing exactly how you sound. Before we write a word, we understand your voice — so every piece we produce is unmistakably yours.' },
+          { title: 'Research & Refinement', body: 'Good writing is rewriting. Great writing is researched rewriting. We go deep on every topic so our work stands behind its claims.' },
+          { title: 'Legacy Over Virality', body: 'We write for longevity, not the algorithm. Content that builds authority doesn\'t chase trends — it sets them.' },
+        ].map(p => (
+          <div style="padding:36px;border:1px solid var(--border);border-radius:var(--radius-lg);">
+            <h3 style="font-family:var(--font-serif);font-style:italic;font-size:1.25rem;margin-bottom:14px;">{p.title}</h3>
+            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.8;">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Story -->
+  <section class="section">
+    <div class="container" style="max-width:760px;margin:0 auto;">
+      <div class="fade-in">
+        <span class="label" style="margin-bottom:16px;display:block;">The story</span>
+        <h2 class="heading" style="font-style:italic;margin-bottom:32px;">How we got here</h2>
+        <p style="font-size:1rem;line-height:1.9;color:var(--text-muted);margin-bottom:20px;">
+          E. Trenchburg Writes was built on a belief that most brands are under-written — not under-funded. Founded by Elena Trenchburg in 2024 and grown into a six-member editorial team, we partner with discerning brands to do one thing exceptionally well: put words to work.
+        </p>
+        <div class="pull-quote">
+          "From long-form thought leadership to surgical brand copy, every piece we produce is researched, refined, and crafted with purpose. We don't chase trends. We build legacies."
+        </div>
+        <p style="font-size:1rem;line-height:1.9;color:var(--text-muted);margin-bottom:20px;">
+          When you consciously invest in your brand voice, you make room for the clients, opportunities, and markets that truly align with your work. That's when you stop chasing and start being chosen.
+        </p>
+        <p style="font-size:1rem;line-height:1.9;color:var(--text-muted);margin-bottom:32px;">
+          Thank you for being here. Let's build something lasting. <em>x</em>
+        </p>
+        <a href="/contact" class="btn btn-primary">Let's Work Together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offline / Who We Are -->
+  <section class="section-sm" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div style="max-width:560px;">
+        <h2 class="heading" style="margin-bottom:16px;">Who We Are Offline</h2>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.8;">
+          Based in Ludhiana, India, our six-member editorial team works remotely with clients worldwide. Elena and her team are avid readers, slow coffee drinkers, and firm believers that the best writing happens after a good edit — or five.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Cards -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="grid-3 fade-in">
+        {[
+          { heading: 'The Editorial', sub: 'Weekly brand writing insights for your inbox', cta: 'Join us', href: '/newsletter' },
+          { heading: 'Free Downloads', sub: 'Resources to help your brand write better, starting today', cta: 'Get free tools', href: '/free-downloads' },
+          { heading: 'Explore Services', sub: 'Editorial packages designed for discerning brands', cta: "Let's go", href: '/services' },
+        ].map(card => (
+          <div style="padding:40px;border:1px solid var(--border);border-radius:var(--radius-lg);text-align:center;">
+            <h3 style="font-family:var(--font-serif);font-style:italic;font-size:1.3rem;margin-bottom:10px;">{card.heading}</h3>
+            <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:24px;">{card.sub}</p>
+            <a href={card.href} class="btn btn-outline" style="font-size:0.62rem;padding:10px 20px;">{card.cta}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

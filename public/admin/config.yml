@@ -1,0 +1,85 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+site_url: https://elenatrenchburg.netlify.app
+display_url: https://elenatrenchburg.netlify.app
+logo_url: https://elenatrenchburg.netlify.app/images/about-portrait.jpg
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Category, name: category, widget: select, options: [Brand Voice, Content Strategy, Editorial Craft, Writing Tips, Agency Life] }
+      - { label: Featured Image, name: image, widget: image }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: SEO Meta Description, name: description, widget: text }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: services
+    label: Services
+    folder: src/content/services
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: Price Range, name: price, widget: string }
+      - { label: Category, name: category, widget: select, options: [Long-Form, Copywriting, Strategy, Editing] }
+      - { label: Short Description, name: shortDesc, widget: text }
+      - { label: Full Description, name: body, widget: markdown }
+      - { label: Image, name: image, widget: image, required: false }
+
+  - name: downloads
+    label: Free Downloads
+    folder: src/content/downloads
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: Short Description, name: description, widget: text }
+      - { label: Tag, name: tag, widget: string }
+      - { label: PDF Upload, name: pdf, widget: file, required: false }
+      - { label: Email Gate, name: emailGate, widget: boolean, default: true }
+
+  - name: tools
+    label: Recommended Tools
+    folder: src/content/tools
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: Category, name: category, widget: select, options: [Writing & Editing, Research & SEO, Planning & Strategy, Design & Brand] }
+      - { label: Short Description, name: description, widget: text }
+      - { label: Link, name: link, widget: string }
+
+  - name: newsletter
+    label: Newsletter Archive
+    folder: src/content/newsletter
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Issue Title, name: title, widget: string }
+      - { label: Issue Number, name: number, widget: number }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: Preview Text, name: preview, widget: text }
+      - { label: External Link, name: link, widget: string }
+
+  - name: settings
+    label: Site Settings
+    files:
+      - label: Global Settings
+        name: global
+        file: src/content/settings/global.json
+        fields:
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Instagram Handle, name: instagram, widget: string }
+          - { label: Pinterest Handle, name: pinterest, widget: string }
+          - { label: Contact Email, name: email, widget: string }

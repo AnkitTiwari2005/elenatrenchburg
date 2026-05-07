@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  { name: 'Editorial & Long-Form Content', price: '₹8,000 – ₹20,000/piece', tag: 'Long-Form', cat: 'longform', desc: 'Thought leadership, essays, white papers, and in-depth articles that position your brand as the authority in the room. Every piece is researched, structured, and written to last.', includes: ['Keyword research & SEO optimization', 'Up to 2 rounds of revisions', 'Meta description & social snippets', 'Internal linking recommendations'] },
+  { name: 'Brand Copywriting', price: '₹12,000 – ₹35,000/project', tag: 'Copywriting', cat: 'copy', desc: 'Website copy, landing pages, email sequences, and campaign messaging that converts without sounding like a pitch. Your voice, amplified.', includes: ['Brand voice audit', 'Homepage & key page copy', 'CTA strategy', '2 full revision rounds'] },
+  { name: 'Content Strategy & Blogs', price: '₹6,000 – ₹15,000/month', tag: 'Strategy', cat: 'strategy', desc: 'A full editorial roadmap — topics, SEO, cadence — plus the monthly execution to match. Stop posting randomly. Start publishing with purpose.', includes: ['Monthly editorial calendar', '4–8 blog posts/month', 'SEO keyword mapping', 'Performance reporting'] },
+  { name: 'Editing & Refinement', price: '₹2,500 – ₹8,000/piece', tag: 'Editing', cat: 'editing', desc: 'Your draft, elevated. Structural edits, line edits, and polish that makes every word count. We don\'t just fix grammar — we make your writing sing.', includes: ['Structural & line editing', 'Voice consistency check', 'Clarity & readability pass', '1 revision round'] },
+];
+---
+<BaseLayout title="Services — E. Trenchburg Writes" description="Editorial writing services including long-form content, brand copywriting, content strategy, and editing.">
+  <Nav />
+
+  <section style="padding-top:calc(var(--nav-h) + 80px);padding-bottom:40px;">
+    <div class="container">
+      <div class="fade-in" style="max-width:640px;">
+        <span class="label" style="margin-bottom:14px;display:block;">What we do</span>
+        <h1 class="display-sm" style="font-style:italic;margin-bottom:16px;">Editorial Services</h1>
+        <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;">
+          From long-form thought leadership to surgical brand copy — every piece we produce is researched, refined, and crafted with purpose. We don't chase trends. We build legacies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter tabs -->
+  <div class="container">
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="copy">Brand Copywriting</button>
+      <button class="filter-tab" data-filter="strategy">Content Strategy</button>
+      <button class="filter-tab" data-filter="longform">Long-Form</button>
+      <button class="filter-tab" data-filter="editing">Editing</button>
+      <button class="filter-tab" data-filter="custom">Custom Packages</button>
+    </div>
+  </div>
+
+  <!-- Services grid -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="grid-2" id="services-grid">
+        {services.map((s, i) => (
+          <div class={`service-card-full fade-in fade-in-delay-${i % 3 + 1}`} data-cat={s.cat}
+            style="padding:48px;border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:20px;transition:all 0.3s ease;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+              <span class="tag">{s.tag}</span>
+              <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted)">{s.price}</span>
+            </div>
+            <h2 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;">{s.name}</h2>
+            <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.8;">{s.desc}</p>
+            <div>
+              <p class="label" style="margin-bottom:10px;">Includes</p>
+              <ul style="display:flex;flex-direction:column;gap:8px;">
+                {s.includes.map(item => (
+                  <li style="font-size:0.85rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;">
+                    <span style="color:var(--sage);font-size:0.75rem;">✓</span> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <a href="/contact" class="btn btn-primary" style="width:fit-content;margin-top:auto;">Inquire Now</a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Custom Packages coming soon -->
+      <div id="custom-coming-soon" style="display:none;" class="coming-soon">
+        <div class="pulse-text">bespoke packages coming soon</div>
+        <p style="margin-top:16px;font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">
+          In the meantime, <a href="/contact" style="text-decoration:underline;">reach out directly</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process strip -->
+  <section class="section" style="background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header-center fade-in" style="margin-bottom:48px;">
+        <span class="label" style="margin-bottom:12px;display:block;">How it works</span>
+        <h2 class="heading" style="font-style:italic;">Our Process</h2>
+      </div>
+      <div class="grid-4 fade-in fade-in-delay-1">
+        {[
+          { n: '01', title: 'Brief', body: 'You fill out our brief builder. We ask the right questions.' },
+          { n: '02', title: 'Research', body: 'We go deep — your brand, your audience, your competition.' },
+          { n: '03', title: 'Draft', body: 'First draft delivered. Every word intentional.' },
+          { n: '04', title: 'Refine', body: 'Revisions until it\'s exactly right. Then we publish.' },
+        ].map(step => (
+          <div style="text-align:center;padding:32px 20px;">
+            <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;color:var(--sage);margin-bottom:12px;">{step.n}</div>
+            <h3 style="font-family:var(--font-serif);font-style:italic;font-size:1.2rem;margin-bottom:10px;">{step.title}</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const tabs = document.querySelectorAll('.filter-tab');
+  const cards = document.querySelectorAll('[data-cat]') as NodeListOf<HTMLElement>;
+  const grid = document.getElementById('services-grid');
+  const comingSoon = document.getElementById('custom-coming-soon');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = (tab as HTMLElement).dataset.filter;
+
+      if (filter === 'custom') {
+        if (grid) grid.style.display = 'none';
+        if (comingSoon) comingSoon.style.display = 'block';
+        return;
+      }
+      if (grid) grid.style.display = 'grid';
+      if (comingSoon) comingSoon.style.display = 'none';
+
+      cards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? 'flex' : 'none';
+      });
+    });
+  });
+</script>

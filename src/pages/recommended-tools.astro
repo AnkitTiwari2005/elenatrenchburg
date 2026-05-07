@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const toolCats = [
+  {
+    cat: 'Writing & Editing',
+    icon: '✍️',
+    tools: [
+      { name: 'Hemingway Editor', desc: 'Ruthless clarity editing. Shows sentence complexity, passive voice, and readability grade. We use it on every draft.', link: '#' },
+      { name: 'Grammarly', desc: 'More than grammar — tone suggestions, clarity flags, and vocabulary enhancement. The baseline for any content team.', link: '#' },
+      { name: 'ProWritingAid', desc: 'Deep-level style analysis. Our go-to for long-form pieces that need structural polish before the final edit.', link: '#' },
+    ],
+  },
+  {
+    cat: 'Research & SEO',
+    icon: '🔍',
+    tools: [
+      { name: 'Ahrefs', desc: 'Our primary SEO tool. Keyword research, competitor analysis, content gap identification. Expensive but irreplaceable.', link: '#' },
+      { name: 'SurferSEO', desc: 'Excellent for on-page optimisation during the writing phase. We use it to build SEO-informed outlines.', link: '#' },
+      { name: 'Google Search Console', desc: 'Free and essential. Performance data from the source. Tells you what\'s ranking and what\'s close.', link: '#' },
+    ],
+  },
+  {
+    cat: 'Planning & Strategy',
+    icon: '📅',
+    tools: [
+      { name: 'Notion', desc: 'Where our entire editorial workflow lives. Content calendars, briefs, client dashboards, and knowledge bases — all in one place.', link: '#' },
+      { name: 'Trello', desc: 'Visual content pipeline for teams who prefer a Kanban flow. Simple, reliable, and genuinely useful.', link: '#' },
+      { name: 'Airtable', desc: 'For clients managing high-volume content programs. Spreadsheet power with database structure.', link: '#' },
+    ],
+  },
+  {
+    cat: 'Design & Brand',
+    icon: '🎨',
+    tools: [
+      { name: 'Canva Pro', desc: 'Blog graphics, social assets, and document design. The most accessible design tool for content teams.', link: '#' },
+      { name: 'Adobe Express', desc: 'Quick branded content, social banners, and visual snippets. Integrates with the Adobe ecosystem cleanly.', link: '#' },
+      { name: 'Figma', desc: 'For brand presentation decks and editorial design mocks. Where writing meets visual communication.', link: '#' },
+    ],
+  },
+];
+---
+<BaseLayout title="Recommended Tools — E. Trenchburg Writes" description="Tools the E. Trenchburg Writes team actually uses: writing tools, SEO research, planning, and design.">
+  <Nav />
+
+  <section style="padding-top:calc(var(--nav-h) + 80px);padding-bottom:40px;">
+    <div class="container">
+      <div class="fade-in" style="max-width:580px;">
+        <span class="label" style="margin-bottom:14px;display:block;">What we actually use</span>
+        <h1 class="display-sm" style="font-style:italic;margin-bottom:16px;">Recommended Tools</h1>
+        <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;">Every tool below is something our team genuinely uses in our editorial workflow. No paid promotions — just the stack that makes our work better.</p>
+      </div>
+    </div>
+  </section>
+
+  {toolCats.map((group, gi) => (
+    <section class={`section-sm ${gi % 2 === 1 ? 'bg-alt-section' : ''}`} style={gi % 2 === 1 ? 'background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);' : ''}>
+      <div class="container">
+        <div style="margin-bottom:36px;" class="fade-in">
+          <h2 style="font-family:var(--font-serif);font-style:italic;font-size:1.4rem;display:flex;align-items:center;gap:12px;">
+            <span>{group.icon}</span> {group.cat}
+          </h2>
+        </div>
+        <div class="grid-3 fade-in fade-in-delay-1">
+          {group.tools.map(tool => (
+            <div style="padding:32px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg);display:flex;flex-direction:column;gap:12px;transition:all 0.3s ease;" class="tool-card">
+              <h3 style="font-family:var(--font-sans);font-weight:600;font-size:1rem;">{tool.name}</h3>
+              <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;flex:1;">{tool.desc}</p>
+              <a href={tool.link} class="read-more" target="_blank" rel="noopener">Visit tool →</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Disclaimer -->
+  <section class="section-sm" style="border-top:1px solid var(--border);">
+    <div class="container" style="max-width:600px;text-align:center;">
+      <p class="label" style="margin-bottom:8px;">A note on transparency</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.7;">Some links above may be affiliate links. We only recommend tools we genuinely use and believe in. Affiliate income, when earned, supports the creation of free resources like The Editorial newsletter.</p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .tool-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--border-dark); }
+</style>

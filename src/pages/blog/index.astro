@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = [
+  { title: "Why Your Brand Sounds Like Everyone Else (And How to Fix It)", cat: "Brand Voice", date: "May 2024", excerpt: "The sameness problem is real. Here's how to diagnose it and build a voice that's unmistakably yours.", slug: "brand-sounds-like-everyone-else" },
+  { title: "The Anatomy of a Thought Leadership Piece That Actually Leads", cat: "Editorial Craft", date: "Apr 2024", excerpt: "Most thought leadership doesn't lead anywhere. Here's the structure that changes that.", slug: "anatomy-of-thought-leadership" },
+  { title: "Long-Form Is Not Dead — It's Just Being Done Wrong", cat: "Content Strategy", date: "Mar 2024", excerpt: "Long-form content is having a moment — for those who know how to do it right.", slug: "long-form-is-not-dead" },
+  { title: "How to Brief a Writer Without Losing Your Brand Voice", cat: "Writing Tips", date: "Mar 2024", excerpt: "A great brief is half the battle. Here's the one-page format that gets writers to nail your voice on the first draft.", slug: "how-to-brief-a-writer" },
+  { title: "The Hidden Cost of Mediocre Copy: What Bad Writing Is Doing to Your Brand", cat: "Brand Voice", date: "Feb 2024", excerpt: "Bad writing costs more than you think — in trust, conversions, and positioning. Let's quantify it.", slug: "hidden-cost-of-mediocre-copy" },
+];
+
+const categories = ['All', 'Brand Voice', 'Content Strategy', 'Editorial Craft', 'Writing Tips', 'Agency Life'];
+---
+<BaseLayout title="Blog — E. Trenchburg Writes" description="Essays on brand writing, content strategy, editorial craft, and building a voice that outlasts the algorithm.">
+  <Nav />
+
+  <section style="padding-top:calc(var(--nav-h) + 80px);padding-bottom:40px;">
+    <div class="container">
+      <div class="fade-in" style="max-width:580px;">
+        <span class="label" style="margin-bottom:14px;display:block;">Essays & Insights</span>
+        <h1 class="display-sm" style="font-style:italic;margin-bottom:16px;">Blog Posts</h1>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;">Thinking out loud on brand writing, editorial craft, and everything in between.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category filter -->
+  <div class="container">
+    <div class="filter-tabs" id="blog-filter-tabs">
+      {categories.map(c => (
+        <button class={`filter-tab ${c === 'All' ? 'active' : ''}`} data-cat={c}>{c}</button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Newsletter strip -->
+  <div style="background:var(--bg-dark);padding:20px 0;margin-bottom:0;">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <p style="font-family:var(--font-serif);font-style:italic;font-size:1rem;color:rgba(250,248,245,0.8);">Not your average newsletter — cozy up with The Editorial every week.</p>
+      <a href="/newsletter" class="btn" style="background:transparent;border:1px solid rgba(250,248,245,0.4);color:rgba(250,248,245,0.8);font-size:0.62rem;padding:10px 20px;">Join The Editorial</a>
+    </div>
+  </div>
+
+  <!-- Posts grid -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="grid-3" id="blog-grid">
+        {posts.map((post, i) => (
+          <article class={`blog-card fade-in fade-in-delay-${i % 3 + 1}`} data-cat={post.cat}>
+            <div class="card-img" style="aspect-ratio:3/2;border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-alt);">
+              <img src="/images/blog-hero-1.jpg" alt={post.title} style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="tag">{post.cat}</span>
+                <span class="label">{post.date}</span>
+              </div>
+              <h2><a href={`/blog/${post.slug}`} style="font-family:var(--font-serif);font-style:italic;font-size:1.1rem;line-height:1.4;display:block;margin-bottom:8px;transition:color 0.3s;">{post.title}</a></h2>
+              <p>{post.excerpt}</p>
+              <a href={`/blog/${post.slug}`} class="read-more">Read More →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Rather watch section -->
+  <section class="section-sm" style="background:var(--bg-alt);border-top:1px solid var(--border);text-align:center;">
+    <div class="container">
+      <h2 style="font-family:var(--font-serif);font-style:italic;font-size:1.6rem;margin-bottom:16px;">Rather listen than read?</h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:24px;">The Editorial newsletter delivers weekly brand writing insights straight to your inbox.</p>
+      <a href="/newsletter" class="btn btn-primary">Join The Editorial</a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const tabs = document.querySelectorAll('#blog-filter-tabs .filter-tab');
+  const cards = document.querySelectorAll('#blog-grid [data-cat]') as NodeListOf<HTMLElement>;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = (tab as HTMLElement).dataset.cat;
+      cards.forEach(card => {
+        card.style.display = (filter === 'All' || card.dataset.cat === filter) ? 'flex' : 'none';
+        card.style.flexDirection = 'column';
+      });
+    });
+  });
+</script>
